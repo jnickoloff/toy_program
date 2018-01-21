@@ -1,19 +1,40 @@
 #include "UnitTest++/UnitTest++.h"
 #include "wordfind.h"
 
+using namespace std;
 
-TEST(Sanity) 
+
+struct Fixture
 {
-   CHECK_EQUAL(1, 1);
+    Fixture() :
+        finder("Hello, my name is Benjamin Smith.", 'a')
+    {}
+
+    WordFindStream finder;
+};
+
+
+TEST_FIXTURE(Fixture, findsFirstWord)
+{
+    string actual;
+    finder >> actual ;
+    CHECK_EQUAL("name", actual);
 }
 
-TEST(WordFindInit)
+TEST_FIXTURE(Fixture, findsSecondWord)
 {
-    //WordFind* a = new WordFind();
-    //a->foo();
-    
-    WordFind a;
-    a.foo();
+    string actual;
+    finder >> actual;
+    finder >> actual;
+    CHECK_EQUAL("Benjamin", actual);
+}
+
+TEST(returnsEmptyStringIfCantFindCharacter)
+{
+    WordFindStream finder("Hello, my name is Benjamin Smith.", 'z');
+    string actual;
+    finder >> actual;
+    CHECK_EQUAL("", actual);
 }
 
 int main(int, const char *[])

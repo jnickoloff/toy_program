@@ -1,11 +1,29 @@
-#include <iostream>
 #include "wordfind.h"
+#include <algorithm>
 
 using namespace std;
 
-
-void WordFind::foo() const
+WordFindStream::WordFindStream(string sentence, char charToSeek) :
+    sentence(sentence),
+    charToSeek(charToSeek)
 {
-    cout << "yarp!" << endl;
+}
+
+WordFindStream& WordFindStream::operator>>(string& str)
+{
+    string currentWord;
+
+    while (! sentence.eof())
+    {
+        sentence >> currentWord;
+
+        if (find(currentWord.begin(), currentWord.end(), charToSeek) != currentWord.end())
+        {
+            str = currentWord;
+            break;
+        }
+    }
+
+    return *this;
 }
 

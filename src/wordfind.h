@@ -1,6 +1,14 @@
-class WordFind
+#include <string>
+#include <sstream>
+
+class WordFindStream
 {
     public:
-        void foo() const;
+        WordFindStream(std::string sentence, char charToSeek);
+        WordFindStream& operator>>(std::string& str);
+
+    private:
+        std::istringstream sentence;
+        char charToSeek;
 };
 
