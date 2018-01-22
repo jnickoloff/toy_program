@@ -1,4 +1,4 @@
-#include "wordfind.h"
+#include "wordfindstream.h"
 #include <algorithm>
 
 using namespace std;

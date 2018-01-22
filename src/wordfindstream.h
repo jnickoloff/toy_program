@@ -1,3 +1,6 @@
+#ifndef WORDFINDSTREAM_H
+#define WORDFINDSTREAM_H
+
 #include <string>
 #include <sstream>
 
@@ -12,3 +15,4 @@ class WordFindStream
         char charToSeek;
 };
 
+#endif

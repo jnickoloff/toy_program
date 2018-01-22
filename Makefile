@@ -1,8 +1,12 @@
 # A very simple makefile.
 
-unit_tests: tests/test_wordfind.cpp src/wordfind.cpp src/wordfind.h
-	g++ -o $@ $^ -Isrc/ -lUnitTest++
-	./unit_tests
+unittests: tests/test_wordfindstream.cpp tests/test_wordfindfunc.cpp src/wordfindstream.cpp  src/wordfindstream.h src/wordfindfunc.cpp src/wordfindfunc.h
+	g++ -o $@ $^ -Isrc/ -lUnitTest++ -std=c++11 -g
+	./$@
+
+wordfinder: src/main.cpp src/wordfindfunc.cpp src/wordfindfunc.h
+	g++ -o $@ $^ -Isrc/ -std=c++11 -g
 
 clean:
-	rm unit_tests
+	rm -f unittests
+	rm -f wordfinder
