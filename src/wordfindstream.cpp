@@ -6,8 +6,7 @@ using namespace std;
 WordFindStream::WordFindStream(string sentence, char charToSeek) :
     sentence(sentence),
     charToSeek(charToSeek)
-{
-}
+{ }
 
 WordFindStream& WordFindStream::operator>>(string& str)
 {
