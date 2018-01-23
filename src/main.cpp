@@ -28,7 +28,7 @@ int main(int argc, char** argv)
     strings words = findWordsWithChar(sentence, charToSeek);
 
     ostream_iterator<string> mycout(cout, " ");
-    copy(words.begin(), words.end(), mycout);
+    copy(begin(words), end(words), mycout);
 
     cout << endl;
 
